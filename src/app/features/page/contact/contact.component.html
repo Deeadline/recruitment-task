@@ -1,0 +1,44 @@
+<section class="container">
+    <form [formGroup]="form" class="form card card-border">
+        <div class="row">
+            <div class="form-group">
+                <div class="col">
+                    <input id="name" type="text" formControlName="name" class="form-input" required appInput/>
+                    <label for="name" class="form-label">Name</label>
+                    <span class="error-message" *ngIf="submitted && form.get('name')?.hasError('required')">
+                        This field is required!
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col">
+                    <input id="email" type="email" formControlName="email" class="form-input" required appInput/>
+                    <label for="email" class="form-label">Email</label>
+                    <span class="error-message" *ngIf="submitted && form.get('email')?.hasError('required')">
+                        This field is required!
+                    </span>
+                    <span class="error-message" *ngIf="submitted && form.get('email')?.hasError('email')">
+                        Email field is invalid!
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col">
+                    <input id="message" type="text" formControlName="message" class="form-input" appInput/>
+                    <label for="message" class="form-label">Message</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col">
+                    <button type="submit" (click)="onSubmit($event)" class="btn btn-primary">Send</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

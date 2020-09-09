@@ -1,0 +1,10 @@
+<article class="card card-border">
+    <div class="card-header">
+        <h3 class="card-title">{{model.name}}</h3>
+        <time [dateTime]="currentData | date:'dd-MM-yyyy':'':'pl'"
+              class="card-data">{{currentData | date:'dd-MM-yyyy':'':'pl'}}</time>
+    </div>
+    <div class="card-body">
+        <img *ngFor="let cam of model.cams" [src]="cam.url" [alt]="cam.name" loading="lazy"/>
+    </div>
+</article>

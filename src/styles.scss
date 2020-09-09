@@ -1,0 +1,253 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import '~bootstrap';
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+$header-border: #dbdbdb;
+$body-background: #f8f8f8;
+$card-title: #c6c6c6; // form labels/text too
+$card-border: #e6e6e6;
+$card-description: #b1b1b1;
+$link-active: #ff7626;
+$link-default: #545454;
+$footer-background: #282828;
+$footer-text: #a1a1a1;
+$button-color: #2194f3;
+$error-color: #ff0000;
+
+.container {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.app-header {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid $header-border;
+  height: 210px;
+  justify-content: center;
+
+  .brand {
+    img {
+      width: 20rem;
+      object-fit: contain;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: pointer;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .brand, .nav {
+      margin-left: 1rem;
+    }
+  }
+
+  .nav-link {
+    color: $link-default;
+    text-transform: uppercase;
+
+    &.active {
+      border-bottom: 3px solid $link-active;
+      color: $link-active;
+    }
+  }
+
+}
+
+.app-main {
+  background-color: $body-background;
+  min-height: calc(100vh - 220px - 80px);
+  overflow: auto;
+
+  app-about, app-skicams {
+    .container {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      flex-wrap: wrap;
+      padding: 1rem 0;
+      align-items: center;
+      margin-bottom: 4rem;
+      @media (min-width: 768px) {
+        justify-content: flex-start;
+        flex-direction: row;
+      }
+    }
+
+    .card {
+      margin: .5rem 0;
+      width: 18rem;
+
+      .card-title {
+        margin-top: .5rem;
+        margin-bottom: 0;
+        color: $card-title;
+      }
+
+      .card-header {
+        position: relative;
+        background: white;
+        display: flex;
+        justify-content: center;
+      }
+
+      .card-data {
+        color: $card-title;
+        font-size: $font-size-sm;
+        position: absolute;
+        right: 10px;
+      }
+
+      @media (min-width: 768px) {
+        margin: .5rem 1rem;
+      }
+    }
+  }
+
+  app-skicams {
+    .card-body {
+      padding: 0;
+    }
+
+    img {
+      width: 18rem;
+      object-fit: contain;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        align-items: flex-start;
+      }
+      .card, img {
+        width: 20rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .card, img {
+        width: 28rem;
+      }
+    }
+    @media (min-width: 1440px) {
+      .card, img {
+        width: 30rem;
+      }
+    }
+  }
+
+  app-contact {
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 220px - 80px);
+
+      .form {
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 18rem;
+        height: 30rem;
+        @media (min-width: 768px) {
+          width: 35rem;
+        }
+
+        .row:last-of-type {
+          width: 16rem;
+          justify-content: flex-end;
+          @media (min-width: 768px) {
+            width: 20rem;
+          }
+
+        }
+
+        .form-group {
+          position: relative;
+
+          .col {
+            display: flex;
+            flex-direction: column;
+            padding: .5rem;
+          }
+
+          &:first-of-type {
+            margin-bottom: 2rem;
+          }
+
+          &:nth-of-type(2) {
+            margin-bottom: 5rem;
+          }
+
+          .form-label {
+            color: $card-title;
+            position: absolute;
+            left: 5px;
+            top: 10px;
+            transition: .2s ease all;
+          }
+
+          .form-input {
+            color: $card-title;
+            border: none;
+            border-bottom: 1px solid $card-border;
+            padding: .75rem;
+            width: 15rem;
+            @media (min-width: 768px) {
+              width: 20rem;
+            }
+
+            &:required ~ label {
+              &:after {
+                content: ' *';
+                color: red;
+              }
+            }
+
+            &:focus {
+              outline: none;
+            }
+
+            &:focus ~ label, &.is-filled ~ label {
+              top: -20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: $footer-background;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    margin: 0;
+    border-top: 1px solid $link-default;
+    padding-top: .5rem;
+    color: $footer-text;
+    text-align: center;
+    width: 15rem;
+  }
+}
+
+.card-border {
+  box-shadow: 2px 2px 5px $card-border;
+}
+
+.error-message {
+  color: $error-color;
+}

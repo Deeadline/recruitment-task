@@ -1,0 +1,9 @@
+<section class="container">
+    <article *ngFor="let item of aboutItems; let index = index" class="card card-border">
+        <img [src]="item.imageUrl" [alt]="item.title + index"/>
+        <div class="card-body">
+            <h3 class="card-title">{{item.title}}</h3>
+            <p class="card-text">{{item.description}}</p>
+        </div>
+    </article>
+</section>
